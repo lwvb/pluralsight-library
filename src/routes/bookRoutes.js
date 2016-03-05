@@ -12,7 +12,7 @@ var mongoFind = function(query, callback) {
       db.close();
     });
   });
-}
+};
 
 var bookRouter = function(nav) {
   router.route('/').get(function(request, response) {

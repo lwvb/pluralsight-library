@@ -12,6 +12,13 @@ var books = [
 ];
 
 var adminRouter = function(nav) {
+  router.use(function(request,response,next) {
+    if(!request.user){
+      response.redirect('/');
+    } else {
+      next();
+    }
+  });
   router.route('/addBooks').get(function(request, response) {
     var url = 'mongodb://localhost:27017/libraryApp';
     mongodb.connect(url, function(err, db) {
