@@ -6,12 +6,11 @@ var port = process.env.PORT || 5001;
 
 app.use(express.static('public'));
 app.use('/lib', express.static('bower_components'));
-// TODO: temp route to make things work
-app.use(express.static('src/views'));
-
+app.set('views', 'src/views');
+app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.send('Hello world');
+  response.render('index', {title: 'Hello this is the title', list: ['a','b']});
 });
 
 app.get('/books', function(request, response) {
